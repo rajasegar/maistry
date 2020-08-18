@@ -6,7 +6,8 @@ A master workman; a foreman for your npm scripts.
 
 - List all project scripts to choose and run
 - Select multiple scripts and run
-- Create/Combine new scripts from existing ones  and add them to package.json
+- Create/Combine new scripts from existing ones and add them to package.json
+- Re-order tasks when you are combining
 - Use npm-run-all to run tasks parallel/sequential
 
 ## Install
