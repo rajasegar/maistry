@@ -1,23 +1,20 @@
 "use strict";
 
 const runAll = require("npm-run-all");
-const prompts = require("prompts");
+const { MultiSelect } = require('enquirer');
 const getTasks = require('./getTasks');
 
 module.exports = function (options) {
 
-  const questions = [
-    {
-      type: "multiselect",
+  const prompt = new MultiSelect({
       name: "scripts",
       message: "Pick your tasks to run:",
       choices: getTasks(),
-    },
-  ];
+    });
 
-  (async () => {
 
-    const response = await prompts(questions);
+    prompt.run()
+    .then(response => {
     const { scripts } = response;
 
     runAll(scripts, {
@@ -31,6 +28,7 @@ module.exports = function (options) {
       .catch((err) => {
         console.log("failed!");
       });
-  })();
+    })
+    .catch(console.error);
 
 };
