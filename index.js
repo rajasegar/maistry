@@ -1,16 +1,6 @@
 "use strict";
 
-const runAll = require("npm-run-all");
+const createTasks = require('./src/createTasks');
+const runTasks = require('./src/runTasks');
 
-module.exports = function (scripts) {
-  runAll(scripts, {
-    parallel: false,
-    stdout: process.stdout,
-  })
-    .then(() => {
-      console.log("done!");
-    })
-    .catch((err) => {
-      console.log("failed!");
-    });
-};
+module.exports = { createTasks, runTasks };
